@@ -35,7 +35,7 @@ const Player = ({
     }, [onPlayerInit, onPlayerDispose, playerOptions]);
 
     return (
-        <div ref={containerRef} style={{ width: '600px' }}>
+        <div ref={containerRef}>
             <video  />
         </div>
     );
