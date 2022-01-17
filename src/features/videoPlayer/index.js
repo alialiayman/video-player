@@ -1,42 +1,64 @@
 import React, { useEffect, useRef } from "react";
 import videojs from "video.js";
-import "videojs-plus";
-import "videojs-plus/dist/videojs-plus.css";
+import "video.js/dist/video-js.css";
+import './bright.css';
 
 const defaultPlayerOptions = {
-    autoplay: true,
-    muted: false,
-    aspectRatio: "16:9",
+    autoplay: false,
+    muted: true,
+    fluid: true,
     controls: true,
+    preload: 'auto',
+    userActions: {
+        hotkeys: true,
+    },
+    playbackRates: [2, 1.5, 1, 0.75, 0.5],
+    controlBar: { volumePanel: { inline: false, vertical: true }}
 };
 
 const Player = ({
     playerOptions,
-    onPlayerInit,
-    onPlayerDispose
+    onReady
 }) => {
-    const containerRef = useRef(null);
+    const videoRef = useRef(null);
+    const playerRef = useRef(null);
 
     useEffect(() => {
-        if (containerRef.current) {
-            const videoEl = containerRef.current.querySelector("video");
-            const player = videojs(videoEl, {
-                ...defaultPlayerOptions,
-                ...playerOptions,
-            });
+        // make sure Video.js player is only initialized once
+        if (!playerRef.current) {
+            const videoElement = videoRef.current;
+            if (!videoElement) return;
 
-            onPlayerInit && onPlayerInit(player);
-
-            return () => {
-                onPlayerDispose && onPlayerDispose(null);
-                player.dispose();
-            };
+            const player = playerRef.current = videojs(videoElement,
+                {
+                    ...defaultPlayerOptions,
+                    ...playerOptions
+                }, () => {
+                    console.log("player is ready");
+                    onReady && onReady(player);
+                });
+        } else {
+            // you can update player here [update player through props]
+            // const player = playerRef.current;
+            // player.autoplay(options.autoplay);
+            // player.src(options.sources);
         }
-    }, [onPlayerInit, onPlayerDispose, playerOptions]);
+    }, [onReady, playerOptions, videoRef]);
+
+    // Dispose the Video.js player when the functional component unmounts
+    useEffect(() => {
+
+        return () => {
+            if (playerRef.current) {
+                playerRef.current.dispose();
+                playerRef.current = null;
+            }
+        };
+    }, [playerRef]);
 
     return (
-        <div ref={containerRef}>
-            <video  />
+        <div>
+            <video ref={videoRef} className="video-js vjs-bright vjs-big-play-centered" data-setup='{}'/>
         </div>
     );
 }

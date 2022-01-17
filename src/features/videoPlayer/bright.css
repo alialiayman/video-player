@@ -1,0 +1,104 @@
+/* Big play button style */
+.vjs-bright .vjs-big-play-button {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    border: none;
+    background-color: white;
+    color: black;
+    /* margin-top: -.7em; */
+    /* margin-left: -.7em; */
+    /* font-size: 7em; */
+    /* line-height: 1.34em; */
+    /* border-radius: 100px; */
+}
+
+/* Hide picture in picture control */
+.vjs-bright .vjs-picture-in-picture-control {
+    display: none;
+}
+
+/* top progress bar */
+.vjs-bright .vjs-progress-control {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    -webkit-transform: translate(0, -100%);
+    transform: translate(0, -100%);
+}
+
+.vjs-bright .vjs-play-progress {
+    background-color: #f1c40f
+}
+
+.vjs-bright .vjs-play-progress:before {
+    font-size: 1em;
+    top: -.34777777777em
+}
+
+.vjs-bright .vjs-slider {
+    background-color: rgba(255, 255, 255, .2)
+}
+
+.vjs-bright .video-js .vjs-progress-control:hover .vjs-progress-holder,
+.vjs-bright .video-js:hover .vjs-progress-holder {
+    font-size: 2em
+}
+
+/* current time / duration */
+.vjs-bright .vjs-time-control {
+    padding: 0;
+    min-width: 0;
+}
+
+.vjs-bright .vjs-current-time {
+    display: block;
+    padding-right: 4px;
+}
+
+.vjs-bright .vjs-time-divider {
+    display: block
+}
+
+.vjs-bright .vjs-remaining-time {
+    display: none;
+}
+
+.vjs-bright .vjs-duration {
+    display: block;
+    padding-left: 4px;
+}
+
+/* Playback rates menu */
+.vjs-bright .vjs-playback-rate {
+    position: absolute;
+    right: 30px;
+}
+
+/* Quality selection */
+
+/* General */
+.vjs-bright .vjs-control-bar {
+    background-color: rgba(0, 0, 0, .2)
+}
+
+.vjs-bright .vjs-load-progress {
+    background-color: rgba(255, 255, 255, .4)
+}
+
+.vjs-bright .vjs-play-control:before,
+.vjs-bright .vjs-fullscreen-control:before {
+    font-size: 2.3em;
+    line-height: 1.33
+}
+
+.vjs-bright .vjs-fullscreen-control {
+    position: absolute;
+    right: 0;
+}
