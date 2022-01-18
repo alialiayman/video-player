@@ -62,7 +62,7 @@ function App() {
             src: oceanVideo
           }]
         })}
-          style={{ backgroundColor: 'lime', width: '10rem', height: '4rem', fontSize: '1rem' }}
+          style={{ backgroundColor: 'tan', width: '10rem', height: '4rem', fontSize: '1rem' }}
         >ocean video</button>
 
       </div>
@@ -72,6 +72,7 @@ function App() {
         <Player
           playerOptions={playerOptions}
           onReady={handleOnReady}
+          width={500}
         />
       </div>
       <p style={{ width: '100%', textAlign: 'center' }}>Open in different browsers to see the difference ex. chrome, safari and IE. modern browsers auto play only if muted</p>

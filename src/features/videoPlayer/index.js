@@ -13,12 +13,13 @@ const defaultPlayerOptions = {
         hotkeys: true,
     },
     playbackRates: [2, 1.5, 1, 0.75, 0.5],
-    controlBar: { volumePanel: { inline: false, vertical: true }}
+    controlBar: { volumePanel: { inline: false, vertical: true } }
 };
 
 const Player = ({
     playerOptions,
-    onReady
+    onReady,
+    width,
 }) => {
     const videoRef = useRef(null);
     const playerRef = useRef(null);
@@ -32,7 +33,7 @@ const Player = ({
             const player = playerRef.current = videojs(videoElement,
                 {
                     ...defaultPlayerOptions,
-                    ...playerOptions
+                    ...playerOptions,
                 }, () => {
                     console.log("player is ready");
                     onReady && onReady(player);
@@ -58,7 +59,7 @@ const Player = ({
 
     return (
         <div>
-            <video ref={videoRef} className="video-js vjs-bright vjs-big-play-centered" data-setup='{}'/>
+            <video ref={videoRef} className="video-js vjs-bright vjs-big-play-centered" data-setup={`{"width": ${width},  "controls" : true}`} />
         </div>
     );
 }
